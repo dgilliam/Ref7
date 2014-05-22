@@ -84,7 +84,7 @@ module.exports = function (grunt) {
                     cleancss: false
                 },
                 files: {
-                    'build/css/framework7.css' : ['src/less/framework7.less']
+                    'build/css/framework7.min.css' : ['src/less/framework7.less']
                 }
             },
             dist: {
@@ -133,27 +133,6 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            apps: {
-                options: {
-                    cleancss: false
-                },
-                files: [
-                    {
-                        expand: true,
-                        cwd: 'apps/weather7/less/',
-                        src: ['*.less'],
-                        dest: 'apps/weather7/css/',
-                        ext: '.css'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'apps/todo7/less/',
-                        src: ['*.less'],
-                        dest: 'apps/todo7/css/',
-                        ext: '.css'
-                    },
-                ]
-            },
         },
         concat: {
             options: {
@@ -177,7 +156,7 @@ module.exports = function (grunt) {
             },
             js: {
                 src: jsFilesList,
-                dest: 'build/js/<%= framework7.filename %>.js'
+                dest: 'build/js/<%= framework7.filename %>.min.js'
             },
             css_build: {
                 src: ['build/css/<%= framework7.filename %>.css'],
@@ -206,7 +185,7 @@ module.exports = function (grunt) {
                 src: ['Gruntfile.js', 'build/js/framework7.js']
             }
         },
-        
+
         watch: {
             build: {
                 files: ['src/**'],
@@ -295,7 +274,7 @@ module.exports = function (grunt) {
                         dest: 'examples/split-view-panel/',
                         ext: '.html'
                     },
-                    
+
                 ]
             },
             apps: {
