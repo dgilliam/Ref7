@@ -1,0 +1,27 @@
+doctype
+html
+  include ../includes/head
+
+  body
+    .views
+      .view.view-main
+        .navbar
+          .navbar-inner
+            .left
+              a(href="#").back.link
+                i.icon.icon-back-blue
+                span Article IV
+            .center.sliding IL 411
+            .right
+              // Right link contains only icon - additional "icon-only" class
+              a(href="#").link.icon-only.open-panel
+                i.icon.icon-bars-blue
+
+      .pages
+        .page(data-page="IL_411")
+          .page-content
+            .content-block-title Liability Insurance
+            .content-block
+              .content-block-inner
+                p(style='white-space:pre-line;')
+                  |Evidence that a person was or was not insured against liability is not admissible upon the issue whether the person acted negligently or otherwise wrongfully. This rule does not require the exclusion of evidence of insurance against liability when offered for another purpose, such as proof of agency, ownership, or control, or bias or prejudice of a witness.

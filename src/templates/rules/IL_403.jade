@@ -1,0 +1,28 @@
+
+doctype
+html
+  include ../includes/head
+
+  body
+    .views
+      .view.view-main
+        .navbar
+          .navbar-inner
+            .left
+              a(href="#").back.link
+                i.icon.icon-back-blue
+                span Article IV
+            .center.sliding IL 403
+            .right
+              // Right link contains only icon - additional "icon-only" class
+              a(href="#").link.icon-only.open-panel
+                i.icon.icon-bars-blue
+
+      .pages
+        .page(data-page="IL_403")
+          .page-content
+            .content-block-title Exclusion of Relevant Evidence on Grounds of Prejudice, Confusion, or Waste of Time
+            .content-block
+              .content-block-inner
+                p(style='white-space:pre-line;')
+                  |Although relevant, evidence may be excluded if its probative value is substantially outweighed by the danger of unfair prejudice, confusion of the issues, or misleading the jury, or by considerations of undue delay, waste of time, or needless presentation of cumulative evidence.

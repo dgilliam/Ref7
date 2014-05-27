@@ -194,34 +194,6 @@ module.exports = function (grunt) {
                     livereload: true
                 }
             },
-            kitchen: {
-                files: ['kitchen-sink/jade/**', 'kitchen-sink/less/**'],
-                tasks: ['jade:kitchen', 'less:kitchen'],
-                options: {
-                    livereload: true
-                }
-            },
-            examples: {
-                files: [
-                    'examples/tab-bar/jade/**', 'examples/tab-bar/less/**',
-                    'examples/split-view/jade/**', 'examples/split-view/less/**',
-                    'examples/split-view-panel/jade/**', 'examples/split-view-panel/less/**'
-                ],
-                tasks: ['jade:examples', 'less:examples'],
-                options: {
-                    livereload: true
-                }
-            },
-            apps: {
-                files: [
-                    'apps/weather7/jade/**', 'apps/weather7/less/**',
-                    'apps/todo7/jade/**', 'apps/todo7/less/**',
-                ],
-                tasks: ['jade:apps', 'less:apps'],
-                options: {
-                    livereload: true
-                }
-            }
         },
         jade: {
             build: {
@@ -234,70 +206,17 @@ module.exports = function (grunt) {
                     src: ['*.jade'],
                     dest: 'build/',
                     ext: '.html'
-                }]
-            },
-            kitchen: {
-                options: {
-                    pretty: true
                 },
-                files: [{
+                {
                     expand: true,
-                    cwd: 'kitchen-sink/jade/',
+                    cwd: 'src/templates/rules',
                     src: ['*.jade'],
-                    dest: 'kitchen-sink/',
+                    dest: 'build/rules',
                     ext: '.html'
-                }]
-            },
-            examples: {
-                options: {
-                    pretty: true
-                },
-                files: [
-                    {
-                        expand: true,
-                        cwd: 'examples/tab-bar/jade/',
-                        src: ['*.jade'],
-                        dest: 'examples/tab-bar/',
-                        ext: '.html'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'examples/split-view/jade/',
-                        src: ['*.jade'],
-                        dest: 'examples/split-view/',
-                        ext: '.html'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'examples/split-view-panel/jade/',
-                        src: ['*.jade'],
-                        dest: 'examples/split-view-panel/',
-                        ext: '.html'
-                    },
+                }
+                ],
 
-                ]
             },
-            apps: {
-                options: {
-                    pretty: true
-                },
-                files: [
-                    {
-                        expand: true,
-                        cwd: 'apps/weather7/jade/',
-                        src: ['*.jade'],
-                        dest: 'apps/weather7/',
-                        ext: '.html'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'apps/todo7/jade/',
-                        src: ['*.jade'],
-                        dest: 'apps/todo7/',
-                        ext: '.html'
-                    },
-                ]
-            }
         },
         copy: {
             build: {
@@ -369,23 +288,6 @@ module.exports = function (grunt) {
         'copy:dist',
         'uglify:dist'
     ]);
-
-
-    // Kitchen Sink
-    this.registerTask('kitchen', 'Builds a kithcen sink', [
-        'build',
-        'jade:kitchen',
-        'less:kitchen'
-    ]);
-    this.registerTask('examples', 'Compile examples less and jade files', [
-        'jade:examples',
-        'less:examples'
-    ]);
-    this.registerTask('apps', 'Compile apps less and jade files', [
-        'jade:apps',
-        'less:apps'
-    ]);
-
     // Server
     this.registerTask('server', 'Run server', [
         'connect',

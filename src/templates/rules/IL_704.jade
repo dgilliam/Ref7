@@ -1,0 +1,28 @@
+
+doctype
+html
+  include ../includes/head
+
+  body
+    .views
+      .view.view-main
+        .navbar
+          .navbar-inner
+            .left
+              a(href="#").back.link
+                i.icon.icon-back-blue
+                span Article VII
+            .center.sliding IL 704
+            .right
+              // Right link contains only icon - additional "icon-only" class
+              a(href="#").link.icon-only.open-panel
+                i.icon.icon-bars-blue
+
+      .pages
+        .page(data-page="IL_704")
+          .page-content
+            .content-block-title Opinion on Ultimate Issue
+            .content-block
+              .content-block-inner
+                p(style='white-space:pre-line;')
+                  |Testimony in the form of an opinion or inference otherwise admissible is not objectionable because it embraces an ultimate issue to be decided by the trier of fact.

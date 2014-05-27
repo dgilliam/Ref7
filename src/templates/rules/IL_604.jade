@@ -1,0 +1,28 @@
+
+doctype
+html
+  include ../includes/head
+
+  body
+    .views
+      .view.view-main
+        .navbar
+          .navbar-inner
+            .left
+              a(href="#").back.link
+                i.icon.icon-back-blue
+                span Article VI
+            .center.sliding IL 604
+            .right
+              // Right link contains only icon - additional "icon-only" class
+              a(href="#").link.icon-only.open-panel
+                i.icon.icon-bars-blue
+
+      .pages
+        .page(data-page="IL_604")
+          .page-content
+            .content-block-title Interpreters
+            .content-block
+              .content-block-inner
+                p(style='white-space:pre-line;')
+                  |An interpreter is subject to the provisions of these rules relating to qualification as an expert and the administration of an oath or affirmation to make a true translation.

@@ -1,0 +1,27 @@
+doctype
+html
+  include ../includes/head
+
+  body
+    .views
+      .view.view-main
+        .navbar
+          .navbar-inner
+            .left
+              a(href="#").back.link
+                i.icon.icon-back-blue
+                span Article IV
+            .center.sliding IL 409
+            .right
+              // Right link contains only icon - additional "icon-only" class
+              a(href="#").link.icon-only.open-panel
+                i.icon.icon-bars-blue
+
+      .pages
+        .page(data-page="IL_409")
+          .page-content
+            .content-block-title Payment of Medical and Similar Expenses
+            .content-block
+              .content-block-inner
+                p(style='white-space:pre-line;')
+                  |In addition to the provisions of section 8–1901 of the Code of Civil Procedure (735 ILCS 5/8–1901), evidence of furnishing or offering or promising to pay medical, hospital, or similar expenses occasioned by an injury is not admissible to prove liability for the injury.
