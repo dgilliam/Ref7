@@ -1,17 +1,7 @@
 doctype
 html
   head
-    meta(charset="utf-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui")
-    meta(name='apple-mobile-web-app-capable', content='yes')
-    meta(name="apple-mobile-web-app-status-bar-style", content="black")
-    title ReffLaw
-    // Path to Framework7 Library CSS
-    link(rel="stylesheet", href="css/framework7.min.css")
-    // Path to your custom app styles
-    link(rel="stylesheet", href="css/my-app.css")
-    // fontawesome
-    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css")
+    include includes/head
   body
     // Status bar overlay for fullscreen mode
     .statusbar-overlay
@@ -21,7 +11,7 @@ html
     // Left panel with reveal effect
     .panel.panel-left.panel-reveal
       .content-block
-        p Left panel content goes here
+        p index
     // Right panel with cover effect
     .panel.panel-right.panel-cover
       .content-block
@@ -46,7 +36,7 @@ html
           .page(data-page="index")
             // Scrollable page content
             .page-content
-              .content-block-title Image Placeholder
+              .content-block-title **Image Placeholder**
                 <br>
                 <br>
                 <br>
