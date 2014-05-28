@@ -10,7 +10,7 @@
  *
  * Licensed under MIT
  *
- * Released on: May 17, 2014
+ * Released on: May 22, 2014
 */
 (function () {
 
@@ -22,6 +22,9 @@
     
         // App
         var app = this;
+    
+        // Version
+        app.version = '0.8.5';
     
         // Anim Frame
         app._animFrame = function (callback) {
@@ -52,8 +55,6 @@
             swipeBackPageBoxShadow: true,
             // Ajax
             ajaxLinks: undefined, // or CSS selector
-            // Pull To Refresh
-            pullToRefresh: true,
             // Sortable
             sortable: true,
             // Swipeout
@@ -638,6 +639,8 @@
             if (app.initSmartSelects) app.initSmartSelects(pageContainer);
             // Init slider
             if (app.initSlider) app.initSlider(pageContainer);
+            // Init slider
+            if (app.initPullToRefresh) app.initPullToRefresh(pageContainer);
         };
         
         // Load Page
@@ -1492,7 +1495,6 @@
         ======================================================*/
         app.allowPanelOpen = true;
         app.openPanel = function (panelPosition) {
-            // @panelPosition - string with panel position "left", "right"
             if (!app.allowPanelOpen) return false;
             var panel = $('.panel-' + panelPosition);
             if (panel.length === 0 || panel.hasClass('active')) return false;
@@ -1714,15 +1716,13 @@
                         timeDiff < 300 && Math.abs(translate) >= 0 ||
                         timeDiff >= 300 && (Math.abs(translate) <= panelWidth / 2)
                     ) {
-                        action = 'swap';
+                        if (side === 'left' && translate === panelWidth) action = 'reset';
+                        else action = 'swap';
                     }
                     else {
                         action = 'reset';
                     }
                 }
-        
-                panelOverlay.css({display: ''}).transform('');
-                panel.transition('').transform('');
                 if (action === 'swap') {
                     app.allowPanelOpen = true;
                     if (opened) {
@@ -1763,6 +1763,8 @@
                     views.transition('');
                     views.transform('');
                 }
+                panel.transition('').transform('');
+                panelOverlay.css({display: ''}).transform('');
             }
             $(document).on(app.touchEvents.start, handleTouchStart);
             $(document).on(app.touchEvents.move, handleTouchMove);
@@ -2282,7 +2284,13 @@
         /*======================================================
         ************   Pull To Refresh   ************
         ======================================================*/
-        app.initPullToRefresh = function () {
+        app.initPullToRefresh = function (pageContainer) {
+            var eventsTarget = $(pageContainer);
+            if (!eventsTarget.hasClass('pull-to-refresh-content')) {
+                eventsTarget = eventsTarget.find('.pull-to-refresh-content');
+            }
+            if (eventsTarget.length === 0) return;
+        
             var isTouched, isMoved, touchesStart = {}, isScrolling, touchesDiff, touchStartTime, container, refresh = false, useTranslate = false, startTranslate = 0;
             function handleTouchStart(e) {
                 if (isTouched) return;
@@ -2358,9 +2366,24 @@
                 isTouched = false;
                 isMoved = false;
             }
-            $(document).on(app.touchEvents.start, '.pull-to-refresh-content', handleTouchStart);
-            $(document).on(app.touchEvents.move, '.pull-to-refresh-content', handleTouchMove);
-            $(document).on(app.touchEvents.end, '.pull-to-refresh-content', handleTouchEnd);
+        
+            // Attach Events
+            eventsTarget.on(app.touchEvents.start, handleTouchStart);
+            eventsTarget.on(app.touchEvents.move, handleTouchMove);
+            eventsTarget.on(app.touchEvents.end, handleTouchEnd);
+        
+            // Detach Events on page remove
+            var page = eventsTarget.hasClass('page') ? eventsTarget : eventsTarget.parents('.page');
+            if (page.length === 0) return;
+            function detachEvents() {
+                eventsTarget.off(app.touchEvents.start, handleTouchStart);
+                eventsTarget.off(app.touchEvents.move, handleTouchMove);
+                eventsTarget.off(app.touchEvents.end, handleTouchEnd);
+        
+                page.off('pageBeforeRemove', detachEvents);
+            }
+            page.on('pageBeforeRemove', detachEvents);
+        
         };
         
         app.pullToRefreshDone = function (container) {
@@ -3814,16 +3837,13 @@
             // Init push state
             if (app.initPushState && app.params.pushState) app.initPushState();
         
-            // Init Swipeouts events
+            // Init Live Swipeouts events
             if (app.initSwipeout && app.params.swipeout) app.initSwipeout();
         
-            // Init Sortable events
+            // Init Live Sortable events
             if (app.initSortable && app.params.sortable) app.initSortable();
         
-            // Init Pull To Refresh
-            if (app.initPullToRefresh && app.params.pullToRefresh) app.initPullToRefresh();
-        
-            // Init Swipe Panels
+            // Init Live Swipe Panels
             if (app.initSwipePanels && app.params.swipePanel) app.initSwipePanels();
             
             // App Init callback
@@ -4162,14 +4182,38 @@
             }
         },
         is: function (selector) {
-            var compareWith;
-            if (typeof selector === 'string') compareWith = document.querySelectorAll(selector);
-            else if (selector.nodeType) compareWith = [selector];
-            else compareWith = selector;
-            for (var i = 0; i < compareWith.length; i++) {
-                if (compareWith[i] === this[0]) return true;
+            if (!this[0]) return false;
+            var compareWith, i;
+            if (typeof selector === 'string') {
+                var el = this[0];
+                if (el === document) return selector === document;
+                if (el === window) return selector === window;
+    
+                if (el.matches) return el.matches(selector);
+                else if (el.webkitMatchesSelector) return el.webkitMatchesSelector(selector);
+                else if (el.mozMatchesSelector) return el.mozMatchesSelector(selector);
+                else if (el.msMatchesSelector) return el.msMatchesSelector(selector);
+                else {
+                    compareWith = $(selector);
+                    for (i = 0; i < compareWith.length; i++) {
+                        if (compareWith[i] === this[0]) return true;
+                    }
+                    return false;
+                }
             }
-            return false;
+            else if (selector === document) return this[0] === document;
+            else if (selector === window) return this[0] === window;
+            else {
+                if (selector.nodeType || selector instanceof Dom7) {
+                    compareWith = selector.nodeType ? [selector] : selector;
+                    for (i = 0; i < compareWith.length; i++) {
+                        if (compareWith[i] === this[0]) return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
+            
         },
         indexOf: function (el) {
             for (var i = 0; i < this.length; i++) {
