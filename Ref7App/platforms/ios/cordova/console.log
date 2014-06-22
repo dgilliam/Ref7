@@ -4,3 +4,25 @@
 2014-05-27 22:47:23.636 ReffLaw[22205:70b] Finished load of: file:///Users/drewgilliam/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/E9DBA4C0-4AC3-49B7-B64F-17E9EF187EE1/ReffLaw.app/www/index.html
 2014-05-27 23:33:46.528 ReffLaw[22205:70b] Unbalanced calls to begin/end appearance transitions for <_UIFallbackPresentationViewController: 0xa378980>.
 2014-05-27 23:34:01.657 ReffLaw[22205:70b] Unbalanced calls to begin/end appearance transitions for <_UIFallbackPresentationViewController: 0xa378980>.
+2014-06-17 06:58:38.163 ReffLaw[13708:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-17 06:58:38.830 ReffLaw[13708:70b] Resetting plugins due to page load.
+2014-06-17 06:58:39.143 ReffLaw[13708:70b] Finished load of: file:///Users/drewgilliam/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/8017DEC0-AE6E-4E8B-B00E-1C038FD6AC7A/ReffLaw.app/www/index.html
+2014-06-17 07:07:02.891 ReffLaw[14531:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-17 07:07:02.978 ReffLaw[14531:70b] Resetting plugins due to page load.
+2014-06-17 07:07:03.056 ReffLaw[14531:70b] Finished load of: file:///Users/drewgilliam/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/8017DEC0-AE6E-4E8B-B00E-1C038FD6AC7A/ReffLaw.app/www/index.html
+2014-06-22 14:14:13.146 ReffLaw[12740:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-22 14:14:14.539 ReffLaw[12740:70b] Resetting plugins due to page load.
+2014-06-22 14:14:14.883 ReffLaw[12740:70b] Finished load of: file:///Users/drewgilliam/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/8017DEC0-AE6E-4E8B-B00E-1C038FD6AC7A/ReffLaw.app/www/index.html
+2014-06-22 14:14:44.633 ReffLaw[12740:70b] Received memory warning.
+2014-06-22 14:19:30.164 ReffLaw[13415:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-22 14:19:30.385 ReffLaw[13415:70b] Resetting plugins due to page load.
+2014-06-22 14:19:30.531 ReffLaw[13415:70b] Finished load of: file:///Users/drewgilliam/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/3997C7F7-C467-44A0-B22B-4D2088FA7EEF/ReffLaw.app/www/index.html
+2014-06-22 14:28:27.146 ReffLaw[14073:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-22 14:28:27.331 ReffLaw[14073:70b] Resetting plugins due to page load.
+2014-06-22 14:28:27.491 ReffLaw[14073:70b] Finished load of: file:///Users/drewgilliam/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/D818ADD1-B419-4C91-8441-03ACE156E6DF/ReffLaw.app/www/index.html
+2014-06-22 14:46:07.803 ReffLaw[15291:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-22 14:46:07.975 ReffLaw[15291:70b] Resetting plugins due to page load.
+2014-06-22 14:46:08.130 ReffLaw[15291:70b] Finished load of: file:///Users/drewgilliam/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/D818ADD1-B419-4C91-8441-03ACE156E6DF/ReffLaw.app/www/index.html
+2014-06-22 14:49:48.855 ReffLaw[15944:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-22 14:49:49.064 ReffLaw[15944:70b] Resetting plugins due to page load.
+2014-06-22 14:49:49.216 ReffLaw[15944:70b] Finished load of: file:///Users/drewgilliam/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/D818ADD1-B419-4C91-8441-03ACE156E6DF/ReffLaw.app/www/index.html
